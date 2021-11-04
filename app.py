@@ -10,20 +10,27 @@ import plotly.figure_factory as ff
 df = pd.read_csv('athlete_events.csv')
 region_df = pd.read_csv('noc_regions.csv')
 
-st.title("All About Olympics")
-st.text("The Olympic Games, which originated in ancient Greece as many as 3,000 years ago, were revived in the late 19th century and have become the world’s preeminent sporting competition. From the 8th century B.C. to the 4th century A.D., the Games were held every four years in Olympia, located in the western Peloponnese peninsula, in honor of the god Zeus. The first modern Olympics took place in 1896 in Athens, and featured 280 participants from 12 nations, competing in 43 events. Since 1994, the Summer and Winter Olympic Games have been held separately and have alternated every two years. The 2020 Summer Olympics, delayed one year because of the COVID-19 pandemic, it held from July 23 to August 8, 2021 in Tokyo, Japan.")
-video_file = open('Olympic_intro.mp4', 'rb')
-video_bytes = video_file.read()
-st.video(video_bytes)
-
 st.sidebar.image("olympic_img.png")
 st.sidebar.header("OLYMPIC ANALYSIS")
 
 df = preprocessor.preprocess(df, region_df)
 user_menu = st.sidebar.radio(
     'Select an option',
-    ('Medal Tally', 'Overall Analysis', 'Country-wise Analysis', 'Athletic-wise Analysis')
+    ('Introduction','Medal Tally', 'Overall Analysis', 'Country-wise Analysis', 'Athletic-wise Analysis')
 )
+
+if user_menu == 'Introduction':
+    st.title("All About Olympics")
+    st.text(
+        "The Olympic Games, which originated in ancient Greece as many as 3,000 years ago, were revived in the late 19th century and have become the world’s preeminent sporting competition. From the 8th century B.C. to the 4th century A.D., the Games were held every four years in Olympia, located in the western Peloponnese peninsula, in honor of the god Zeus. The first modern Olympics took place in 1896 in Athens, and featured 280 participants from 12 nations, competing in 43 events. Since 1994, the Summer and Winter Olympic Games have been held separately and have alternated every two years. The 2020 Summer Olympics, delayed one year because of the COVID-19 pandemic, it held from July 23 to August 8, 2021 in Tokyo, Japan.")
+    video_file = open('Olympic_intro.mp4', 'rb')
+    video_bytes = video_file.read()
+    st.video(video_bytes)
+
+    st.title("Olympics history")
+    videos = open('Olympic_intro.mp4', 'rb')
+    video_byt = videos.read()
+    st.video(video_byt)
 
 if user_menu == 'Medal Tally':
     st.sidebar.header("Medal Tally")
