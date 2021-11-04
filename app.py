@@ -28,7 +28,7 @@ if user_menu == 'Introduction':
     st.video(video_bytes)
 
     st.title("Olympics history")
-    videos = open('Olympic_intro.mp4', 'rb')
+    videos = open('history.mp4', 'rb')
     video_byt = videos.read()
     st.video(video_byt)
 
